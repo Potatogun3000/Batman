@@ -93,16 +93,23 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.FORMS
             int ctr = 0;
             lvwTournamentList.Items.Clear();
 
-            foreach (var list in listTournament)
+            if (listTournament != null)
             {
-                item = lvwTournamentList.Items.Add((++ctr).ToString());
-                item.SubItems.Add(list.tournament_id.ToString());
-                item.SubItems.Add(list.tournament_year);
-                item.SubItems.Add(list.tournament_motto);
-                item.SubItems.Add(list.tournament_schedule);
-                item.SubItems.Add(list.tournament_status);
+                foreach (var list in listTournament)
+                {
+                    item = lvwTournamentList.Items.Add((++ctr).ToString());
+                    item.SubItems.Add(list.tournament_id.ToString());
+                    item.SubItems.Add(list.tournament_year);
+                    item.SubItems.Add(list.tournament_motto);
+                    item.SubItems.Add(list.tournament_schedule);
+                    item.SubItems.Add(list.tournament_status);
 
-           }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No active tournament or no tournament has been saved yet");
+            }
         }
 
         private void createTournament()
@@ -124,7 +131,6 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.FORMS
     
         private void updateTournament()
         {
-
             Tournament t = new Tournament();
             if (t.CRUDValidation() == false) return;
 
@@ -143,7 +149,6 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.FORMS
                     MessageBox.Show("Tournament successfully Updated!", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     loadTournamentList();
                     initTournamentInfo();
-
                 }
             }
         }

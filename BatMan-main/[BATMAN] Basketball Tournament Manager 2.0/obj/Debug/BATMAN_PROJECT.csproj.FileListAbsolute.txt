@@ -69,7 +69,6 @@ C:\Users\berna\Desktop\Batman\BatMan-main\[BATMAN] Basketball Tournament Manager
 C:\Users\berna\Desktop\Batman\BatMan-main\[BATMAN] Basketball Tournament Manager 2.0\bin\Debug\[BATMAN] Basketball Tournament Manager 2.0.pdb
 C:\Users\berna\Desktop\Batman\BatMan-main\[BATMAN] Basketball Tournament Manager 2.0\bin\Debug\EPPlus.dll
 C:\Users\berna\Desktop\Batman\BatMan-main\[BATMAN] Basketball Tournament Manager 2.0\bin\Debug\EPPlus.xml
-C:\Users\berna\Desktop\Batman\BatMan-main\[BATMAN] Basketball Tournament Manager 2.0\obj\Debug\BATMAN_PROJECT.csprojAssemblyReference.cache
 C:\Users\berna\Desktop\Batman\BatMan-main\[BATMAN] Basketball Tournament Manager 2.0\obj\Debug\_BATMAN__Basketball_Tournament_Manager_2._0.FORMS.frmAwardHistory.resources
 C:\Users\berna\Desktop\Batman\BatMan-main\[BATMAN] Basketball Tournament Manager 2.0\obj\Debug\_BATMAN__Basketball_Tournament_Manager_2._0.FORMS.frmAwards.resources
 C:\Users\berna\Desktop\Batman\BatMan-main\[BATMAN] Basketball Tournament Manager 2.0\obj\Debug\_BATMAN__Basketball_Tournament_Manager_2._0.FORMS.frmEditPlayers.resources
@@ -96,3 +95,4 @@ C:\Users\berna\Desktop\Batman\BatMan-main\[BATMAN] Basketball Tournament Manager
 C:\Users\berna\Desktop\Batman\BatMan-main\[BATMAN] Basketball Tournament Manager 2.0\obj\Debug\BATMAN_PROJECT.csproj.CopyComplete
 C:\Users\berna\Desktop\Batman\BatMan-main\[BATMAN] Basketball Tournament Manager 2.0\obj\Debug\[BATMAN] Basketball Tournament Manager 2.0.exe
 C:\Users\berna\Desktop\Batman\BatMan-main\[BATMAN] Basketball Tournament Manager 2.0\obj\Debug\[BATMAN] Basketball Tournament Manager 2.0.pdb
+C:\Users\berna\Desktop\Batman\BatMan-main\[BATMAN] Basketball Tournament Manager 2.0\obj\Debug\BATMAN_PROJECT.csprojAssemblyReference.cache
