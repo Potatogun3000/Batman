@@ -16,7 +16,7 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
         public DatabaseConnection()
         {
             sqlConn = new SqlConnection();
-            sqlConn.ConnectionString = @"Server=DESKTOP-3DF77D3; Integrated Security = True; Database = Batman";
+            sqlConn.ConnectionString = @"Server=DESKTOP-6UB0R6I\SQLEXPRESS; Integrated Security = True; Database = BATMAN";
 
             IsConnected = false;
             try

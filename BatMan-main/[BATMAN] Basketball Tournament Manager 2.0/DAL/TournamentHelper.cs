@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
 {
@@ -33,29 +34,37 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
 
         public static List<Tournament> GetTournamentList()
         {
-            List<Tournament> list = null;
-
-            using (DatabaseConnection dal = new DatabaseConnection())
+            try
             {
-                if (!dal.IsConnected) return null;
-                var data = dal.ExecuteQuery("GetTournamentList").Tables[0];
+                List<Tournament> list = null;
 
-                list = new List<Tournament>();
-
-                foreach (DataRow dr in data.AsEnumerable())
+                using (DatabaseConnection dal = new DatabaseConnection())
                 {
-                    Tournament tournament = new Tournament();
-                    tournament.tournament_id         = dr.Field<int>("tournament_id");
-                    tournament.tournament_year       = dr.Field<string>("tournament_year");
-                    tournament.tournament_schedule   = dr.Field<string>("tournament_schedule");
-                    tournament.tournament_motto      = dr.Field<string>("tournament_motto");
-                    tournament.tournament_status     = dr.Field<string>("tournament_status");
+                    if (!dal.IsConnected) return null;
+                    var data = dal.ExecuteQuery("GetTournamentList").Tables[0];
 
-                    list.Add(tournament);
+                    list = new List<Tournament>();
+
+                    foreach (DataRow dr in data.AsEnumerable())
+                    {
+                        Tournament tournament = new Tournament();
+                        tournament.tournament_id = dr.Field<int>("tournament_id");
+                        tournament.tournament_year = dr.Field<string>("tournament_year");
+                        tournament.tournament_schedule = dr.Field<string>("tournament_schedule");
+                        tournament.tournament_motto = dr.Field<string>("tournament_motto");
+                        tournament.tournament_status = dr.Field<string>("tournament_status");
+
+                        list.Add(tournament);
+                    }
                 }
+                return list;
             }
-            return list;
-          }
+            catch (System.ArgumentException)
+            {
+                MessageBox.Show("No match to display");
+                return null;
+            }
+        }
 
 
         public static bool DeleteTournament(int tournamentId)
