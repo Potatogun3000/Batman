@@ -1,0 +1,847 @@
+CREATE DATABASE BATMAN
+GO
+
+USE BATMAN
+GO
+
+
+CREATE TABLE Tournament (
+	
+	tournamentID				int	primary key identity(1,1),
+	tournamentYear				varchar(20)   not null,
+	tournamentSched			varchar(80)	  not null,
+	tournamentMotto		    varchar(50)   not null,
+	tournamentStatus		    varchar(20)   not null,
+)
+
+CREATE TABLE GameOfficial (
+
+	gameofficialID		    int primary key identity(1,1),
+	gameofficialName		varchar(50)		not null,
+	gameofficialDesc		varchar(50)		not null
+)
+
+CREATE TABLE Barangay (
+
+	brgyID		int				primary key  identity(1,1),
+	brgyName	varchar(30) 	not null
+)
+
+
+CREATE TABLE TeamOfficial (
+
+	teamofficialID			int							primary key identity(1,1),
+	teamofficialName		varchar(50)					not null,
+	teamofficialDesc		varchar(50)					not null,					
+)
+
+CREATE TABLE Team (
+	
+	teamID			  int						primary key identity(1,1),
+	teamName		  varchar(30)				not null,
+	teamSlogan		  varchar(50)				not null,
+	teamLogo		  varchar(max)				not null,	
+	barangay		  int				        foreign key REFERENCES Barangay(brgyID)		     ON DELETE CASCADE,
+	teamOfficial      int				        foreign key REFERENCES TeamOfficial(teamofficialID) ON DELETE CASCADE,
+	tournament        int				        foreign key REFERENCES Tournament(tournamentID)     ON DELETE CASCADE
+)
+
+CREATE TABLE Position (
+
+	positionID		   int				primary key identity(1,1),
+	positionDesc	   varchar(50)		not null,
+)
+
+
+CREATE TABLE Player (
+
+	playerID		   int				primary key identity(1,1),
+	jerseyNo		   varchar(75)	    not null,
+	playerName		   varchar(50)		not null,
+	playerAddress	   varchar(80)		not null,
+	playerBirthdate    varchar(20)		not null,
+	IsCaptain		   bit,
+	playerImage		   varchar(max)		not null,
+	position		   int				foreign	key REFERENCES Position(positionID) ON DELETE CASCADE,
+	team			   int		        foreign key REFERENCES Team(teamID) ON DELETE CASCADE
+)
+
+
+CREATE TABLE Match (
+	matchID				int primary key identity(1,1),
+	matchGameNo			int, 
+	matchVenue			varchar(20) not null, 
+	matchRef1			varchar(50),
+	matchRef2			varchar(50),
+	matchHome			varchar(50),
+	matchAway		    varchar(50),
+	matchStatus         varchar(20) not null,
+	tournamentYear		int  foreign	key REFERENCES Tournament(tournamentID)
+)	
+
+CREATE Table TeamStat(
+	teamStatID			    int primary key identity(1,1),
+	teamName			    varchar(50),
+	teamStatTScore			int,
+	teamQ1					int,
+	teamQ2					int,
+	teamQ3					int,
+	teamQ4					int,
+	teamDesc				varchar(20),
+	match					int 
+)
+
+CREATE Table PlayerStat(
+	 playerStatID           int primary key identity(1,1),
+	 JerseyNo			    varchar(20),			
+	 playerPosition			varchar(80),			
+	 playerName				varchar(80),			
+	 playerPoint			int,			
+	 playerReb				int,
+	 playerAssist			int,
+	 playerSteal			int,
+	 PlayerTurnOver			int,
+	 playerFreeThrows		int,
+	 playerFouls			int,
+	 teamDesc 				varchar(20),
+	 match			        int
+)
+
+CREATE TABLE Awards(
+     awardID				    int primary key identity(1,1),
+	 awardChamp				    varchar(50),
+	 awardFirstRunner			varchar(50),
+	 awardMVP					varchar(50),
+	 awardSF					varchar(50),
+	 awardPF					varchar(50),
+	 awardPG				    varchar(50),
+	 awardSG				    varchar(50),
+	 awardC						varchar(50),
+	 tournamentYear				int  foreign	key REFERENCES Tournament(tournamentID)
+)
+
+--AWARDS STORE PROC--
+CREATE PROC SaveAwards
+	 @award_champion		varchar(50),
+	 @award_firstRunnerUp	varchar(50),
+	 @award_mvp				varchar(50),
+	 @award_sf				varchar(50),
+	 @award_pf				varchar(50),
+	 @award_pg				varchar(50),
+	 @award_sg				varchar(50),
+	 @award_c				varchar(50),
+	 @tournamentYear		int  
+	 AS
+	 INSERT INTO Awards(awardChamp,awardFirstRunner,awardMVP,awardSF,awardPF,awardPG,awardSG,awardC,tournamentYear)
+				   VALUES(@award_champion, @award_firstRunnerUp,@award_mvp,@award_sf,@award_pf,@award_pg,@award_sg,@award_c,@tournamentYear)
+
+	CREATE PROC getAwardList
+	AS
+	SELECT Awards.*, Tournament.tournamentYear FROM Awards
+	INNER JOIN Tournament
+	ON Awards.tournamentYear = Tournament.tournamentID
+
+	
+	CREATE PROC checkAward
+	AS
+	SELECT Awards.*, Tournament.tournamentID FROM Awards
+	INNER JOIN Tournament
+	ON Awards.tournamentYear = Tournament.tournamentID
+--AWARDS STORE PROC--
+
+
+--TEAM STAT AND PLAYER STAT STORED PROCEDURE--
+
+	CREATE PROC SaveTeamStat
+	@team_name varchar(50),
+	@teamStat_totalScore varchar(20),
+	@team_statQ1  int,
+	@team_statQ2  int,
+	@team_statQ3  int,
+	@team_statQ4  int,
+	@team_desc    varchar(20),
+	@match	      int
+	AS
+	INSERT INTO TeamStat(teamStatTScore,teamQ1,teamQ2,teamQ3,teamQ4,
+							teamDesc,match,teamName)
+				  VALUES(@teamStat_totalScore,@team_statQ1,@team_statQ2,@team_statQ3,@team_statQ4,@team_desc,@match,@team_name)
+				  SELECT * FROM TeamStat
+
+	CREATE PROC SavePlayerStat
+	 @player_point			int,			
+	 @player_reb		    int,
+	 @player_asst			int,
+	 @player_steal			int,
+	 @player_to				int,
+	 @player_ft				int,
+	 @player_fouls			int,
+	 @match					int,
+	 @player_jno			varchar(20),
+	 @player_name			varchar(80),
+	 @player_position		varchar(50),
+	 @team_desc		        varchar(20)
+	 AS			
+	 INSERT INTO PlayerStat(playerPoint,playerReb,playerAssist,playerSteal,PlayerTurnOver,playerFreeThrows,playerFouls,match
+							 ,JerseyNo,playerName,playerPosition,teamDesc)
+				 VALUES(@player_point,@player_reb,@player_asst,@player_steal,@player_to,@player_ft,@player_fouls,@match
+						,@player_jno,@player_name,@player_position,@team_desc)
+
+	CREATE PROC GetHomeTeam
+	@match_id int
+	AS
+	SELECT * FROM TeamStat WHERE teamDesc = 'HT' and match = @match_id
+
+    CREATE PROC GetGuestTeam
+	@match_id int
+	AS
+	SELECT * FROM TeamStat WHERE teamDesc = 'GT' and match = @match_id
+
+	CREATE PROC GetPlayerHT
+	@match_id int
+	AS
+	SELECT * FROM PlayerStat WHERE teamDesc = 'HT' and match = @match_id
+
+	CREATE PROC GetPlayerGT
+	@match_id int
+	AS
+	SELECT * FROM PlayerStat WHERE teamDesc = 'GT' and match = @match_id
+
+	CREATE PROC getMatchName
+	@match_id int
+	AS
+	SELECT * FROM Match WHERE matchID = @match_id
+
+	CREATE PROC getMatchTeamLogo
+	@team_name varchar(50) 
+	AS
+	SELECT teamLogo FROM Team WHERE teamName = @team_name	
+/*
+	SPgetmVp add the points inside the visual Studio  for changes
+
+*/
+	CREATE PROC getMVP
+	@player_name varchar(50)
+	AS
+	SELECT SUM(playerPoint) + SUM(playerReb)  + SUM(playerAssist) + SUM(playerSteal) AS MVP  FROM PlayerStat 
+	WHERE  playerName = @player_name
+
+	--BEST SMALL FORWARD
+	CREATE PROC getSF
+	@player_name varchar(50)
+	AS
+	SELECT SUM(playerPoint) + SUM(playerReb)  + SUM(playerAssist) + SUM(playerSteal) AS MVP  FROM PlayerStat 
+	WHERE  playerName = @player_name and playerPosition = 'Small forward'
+
+	--BEST POWER FORWARD
+	CREATE PROC getPF
+	@player_name varchar(50)
+	AS
+	SELECT SUM(playerPoint) + SUM(playerReb)  + SUM(playerAssist) + SUM(playerSteal) AS MVP  FROM PlayerStat 
+	WHERE  playerName = @player_name and playerPosition = 'Power forward'
+
+	--BEST POINT GUARD
+	CREATE PROC getPG
+	@player_name varchar(50)
+	AS
+	SELECT SUM(playerPoint) + SUM(playerReb)  + SUM(playerAssist) + SUM(playerSteal) AS MVP  FROM PlayerStat 
+	WHERE  playerName = @player_name and playerPosition = 'Point guard'
+
+	--BEST SHOOTING GUARD
+	CREATE PROC getSG
+	@player_name varchar(50)
+	AS
+	SELECT SUM(playerPoint) + SUM(playerReb)  + SUM(playerAssist) + SUM(playerSteal) AS MVP  FROM PlayerStat 
+	WHERE  playerName = @player_name and playerPosition = 'Shooting guard'
+
+	--BEST CENTER
+	CREATE PROC getC
+	@player_name varchar(50)
+	AS
+	SELECT SUM(playerPoint) + SUM(playerReb)  + SUM(playerAssist) + SUM(playerSteal) AS MVP  FROM PlayerStat 
+	WHERE  playerName = @player_name and playerPosition = 'Center'
+	/* Up to this point 
+
+	----------------------------------------------------------------------------
+
+	*/
+	CREATE PROC getTeamChampion
+	@team_name varchar(50)
+	AS
+	SELECT  SUM(teamStatTScore) AS Champion FROM TeamStat 
+	WHERE   teamName =  @team_name
+
+	CREATE PROC getPlayerInfo
+    @player_name varchar(50)
+	AS
+	SELECT Player.* ,Team.* ,Position.*,Barangay.* FROM Player 
+	INNER JOIN Team
+	ON Player.team			 = teamID
+	INNER JOIN Position
+	ON  Player.position		 = positionID
+	INNER JOIN Barangay
+	ON  Team.barangay        = barangay.brgyID
+	WHERE Player.playerName = @player_name
+		
+		
+				
+--TEAM STAT AND PLAYER STAT STORED PROCEDURE--
+
+---MATCH STORED PROCEDURE ---
+	CREATE PROC SaveMatch
+    @match_gameNo			int,
+	@match_venue            varchar(20),
+	@match_referee1	        varchar(50),
+	@match_referee2		    varchar(50),
+	@match_homeTeam		    varchar(50),
+	@match_guestTeam		varchar(50),
+	@match_status		    varchar(20),
+	@tournamentYear			int
+	AS
+	INSERT INTO Match(matchGameNo,matchVenue,matchRef1,matchRef2,matchHome,matchAway,tournamentYear,matchStatus)
+			   VALUES(@match_gameNo,@match_venue,@match_referee1,@match_referee2,@match_homeTeam,@match_guestTeam,@tournamentYear,@match_status)
+	
+	CREATE PROC GetMatchList
+	@tournament_year varchar(20) 
+	AS
+		SELECT Match.* , Tournament.tournamentYear FROM Match
+	INNER JOIN Tournament
+	ON       Match.tournamentYear	    = Tournament.tournamentID
+	WHERE    Tournament.tournamentYear = @tournament_year
+	ORDER BY Tournament.tournamentYear
+
+	CREATE PROC LoadMatchList
+	AS
+	SELECT Match.* , Tournament.tournamentYear FROM Match
+	INNER JOIN Tournament
+	ON       Match.tournamentYear	    = Tournament.tournamentID
+	WHERE    Tournament.tournamentYear= YEAR(GETDATE())
+	ORDER BY Tournament.tournamentYear
+	
+	CREATE PROC GetTeamId
+	@team_name varchar(50)
+	AS
+	SELECT teamID FROM Team WHERE teamName = @team_name
+
+	CREATE PROC GetMatchPlayer
+	@team_id int
+	AS
+	SELECT Player.jerseyNo,Player.playerName , Position.positionDesc , Team.teamName FROM Player 
+	INNER JOIN Position
+	ON Player.position = Position.positionID
+	INNER JOIN Team
+	On Player.team      = Team.teamID
+	WHERE Player.team  = @team_id
+
+	CREATE PROC UpdateMatchStatus
+	@match_id int,
+	@match_status varchar(20)
+	AS
+	UPDATE Match SET matchStatus = @match_status WHERE matchID = @match_id
+---MATCH STORED PROCEDURE ---
+
+---TOURNAMENT STORED PROCEDURE---
+CREATE PROC SaveTournament
+	
+	@tournament_id			int,
+	@tournament_year		varchar(20),
+	@tournament_schedule	varchar(80),
+	@tournament_motto		varchar(50),
+	@tournament_status		varchar(20)
+			
+	AS
+	IF  @tournament_id = 0
+		INSERT INTO Tournament(tournamentYear,tournamentSched,tournamentMotto,tournamentStatus)
+		VALUES (@tournament_year,@tournament_schedule,@tournament_motto,@tournament_status)
+	ELSE
+		UPDATE Tournament 
+		SET   tournamentYear		 = @tournament_year,
+			  tournamentSched		 = @tournament_schedule,
+			  tournamentMotto		 = @tournament_motto,
+			  tournamentStatus		 = @tournament_status
+		      WHERE tournamentID     = @tournament_id
+
+CREATE PROC GetTournamentList
+	AS
+	SELECT *
+	FROM Tournament
+	ORDER BY tournamentYear DESC
+
+CREATE PROC DeleteTournament
+	@tournament_id int
+	AS
+	DECLARE  @team_id int
+	SELECT   teamID FROM Team     WHERE tournament		  = @tournament_id
+	DELETE   Tournament			   WHERE tournamentID	  = @tournament_id 
+	DELETE   Team				   WHERE tournament		  = @tournament_id
+	SET @team_id = 1
+	DELETE	 TeamOfficial		   WHERE teamofficialID  = @team_id 
+
+
+CREATE PROC SearchTournament
+	@tournament_year		varchar(20),
+	@tournament_schedule	varchar(80),
+	@tournament_motto		varchar(50),
+	@tournament_status		varchar(20)
+	AS
+	SELECT * FROM Tournament WHERE tournamentYear			like    '%' + @tournament_year			+ '%' or
+								   tournamentSched		like 	'%' + @tournament_schedule		+ '%' or
+								   tournamentMotto			like	'%' + @tournament_motto			+ '%' or
+								   tournamentStatus		like	'%' + @tournament_status		+ '%'   
+
+
+
+CREATE PROC CheckTournamentStatus
+	AS
+	SELECT *
+	FROM Tournament 
+	WHERE tournamentYear = YEAR(GETDATE());
+
+CREATE PROC GetTournamentLatestRecord
+	AS
+	SELECT TOP 1 * FROM Tournament ORDER BY tournamentID DESC
+
+CREATE PROC UpdateTournamentStatus
+	@tournament_id int,
+	@tournament_status varchar(20)
+	AS
+	UPDATE Tournament 
+		    SET tournamentStatus = @tournament_status
+		  WHERE tournamentID	  = @tournament_id	
+
+---TOURNAMENT STORED PROCEDURE---
+	
+
+
+
+
+---GameOfficial STORED PROCEDURE---
+CREATE PROC SaveGameOfficial
+	@gameOfficialId   int,
+	@gameOfficialName varchar(50),
+	@gameOfficialDesc varchar(50)
+	AS
+	
+	IF  @gameOfficialId = 0
+	INSERT INTO GameOfficial(gameOfficialName,gameOfficialDesc)
+					  VALUES(@gameOfficialName,@gameOfficialDesc)
+	ELSE
+	UPDATE GameOfficial
+	SET	   gameOfficialName =  @gameOfficialName,		
+		   gameOfficialDesc =  @gameOfficialDesc
+	WHERE  gameOfficialId   = @gameOfficialId
+
+
+CREATE PROC GetGameOfficialList
+	AS
+	SELECT * FROM GameOfficial
+	ORDER BY gameOfficialDesc ASC
+
+CREATE PROC GetGameOfficialReferee
+	AS
+	SELECT * FROM GameOfficial WHERE gameOfficialDesc = 'Referee'
+	ORDER BY gameOfficialDesc ASC
+
+
+CREATE PROC DeleteGameOfficial
+	@gameOfficialId   int
+	AS
+	DELETE GameOfficial WHERE gameOfficialId = @gameOfficialId
+	
+
+CREATE PROC SearchGameOfficial
+	@gameOfficialName varchar(50),
+	@gameOfficialDesc varchar(50)
+	AS
+	SELECT * FROM GameOfficial
+			 WHERE gameOfficialName like '%' + @gameOfficialName + '%' or
+				   gameOfficialDesc like '%' + @gameOfficialDesc + '%'
+---GameOfficial STORED PROCEDURE---
+
+
+
+---Team Official STORED PROCEDURE---
+CREATE PROC SaveTeamOfficial
+	@teamOfficial_name varchar(50),
+	@teamOfficial_desc varchar(50)
+
+	AS
+	INSERT INTO TeamOfficial(teamofficialName,teamofficialDesc)
+					  VALUES(@teamOfficial_name,@teamOfficial_desc)
+
+
+CREATE PROC UpdateTeamOfficial
+	@teamOfficial_id  int,
+	@teamOfficial_name varchar(50),
+	@teamOfficial_desc varchar(50)
+	AS
+	UPDATE TeamOfficial 
+		   SET	  teamofficialName = @teamOfficial_name ,
+			      teamofficialDesc = @teamOfficial_desc
+		   WHERE  teamofficialID   = @teamOfficial_id
+
+
+
+CREATE PROC GetTeamOfficialLatestRecord
+	AS
+	SELECT TOP 1 * FROM TeamOfficial ORDER BY teamofficialID DESC
+
+
+CREATE PROC GetTeamOfficialList
+	AS
+	SELECT teamofficialID,teamofficialName,teamofficialDesc , Team.teamName ,Team.teamID
+	FROM   TeamOfficial
+	INNER JOIN Team 
+	ON	   teamofficialID = Team.teamOfficial
+
+CREATE PROC GetTeamOfficialtoUpdate
+	 @teamOfficial_id   int
+	 AS
+	 SELECT * FROM TeamOfficial WHERE teamofficialID = @teamOfficial_id
+
+
+CREATE PROC SearchTeamOffcial
+	@teamOfficial_name		varchar(50),
+	@teamOfficial_desc		varchar(50),
+	@team_name				varchar(50)
+	AS
+	SELECT teamofficialID,teamofficialName,teamofficialDesc , Team.teamName
+	FROM   TeamOfficial
+	INNER JOIN Team 
+	ON	   teamofficialID = Team.teamOfficial        
+	WHERE
+	teamofficialName like '%' + @teamOfficial_name + '%' or
+	teamofficialDesc like '%' + @teamOfficial_desc + '%' or
+	Team.teamName    like '%' + @team_name			+ '%'
+
+---Team Official STORED PROCEDURE---
+
+
+
+---Team STORED PROCEDURE ---
+CREATE PROC SaveTeam
+	@team_name		  varchar(30),
+	@team_slogan	  varchar(50),
+	@team_logo		  varchar(max),	
+	@barangay		  int,
+	@teamOfficial     int,
+	@tournament		  int 
+	
+	AS
+	INSERT INTO Team(teamName,teamSlogan,teamLogo,barangay,teamOfficial,tournament)
+			  VALUES(@team_name,@team_slogan,@team_logo,@barangay,@teamOfficial,@tournament)		
+	
+
+CREATE PROC GetTeamLatestRecord
+	AS
+	SELECT TOP 1 * FROM Team ORDER BY teamID DESC
+
+
+CREATE PROC CheckTeamList
+	AS
+	SELECT * FROM Team
+
+CREATE PROC GetTeamList
+	AS
+	SELECT  teamID, teamName,teamSlogan ,teamLogo,Barangay.brgyName , TeamOfficial.teamofficialName , TeamOfficial.teamofficialDesc 
+		   ,Tournament.tournamentYear
+	FROM Team
+	INNER JOIN Barangay
+	ON Team.barangay			=	Barangay.brgyID
+	INNER JOIN TeamOfficial
+	ON Team.teamOfficial		= TeamOfficial.teamofficialID
+	INNER JOIN Tournament
+	ON Team.tournament			= Tournament.tournamentID
+	ORDER BY Barangay.brgyName
+
+
+CREATE PROC GetTeamListwLogo
+	@team_id  int 
+	AS
+	SELECT  teamID, teamName,teamSlogan ,teamLogo,Barangay.brgyName , TeamOfficial.teamofficialName , TeamOfficial.teamofficialDesc 
+		   ,Tournament.tournamentYear
+	FROM Team
+	INNER JOIN Barangay
+	ON Team.barangay			= Barangay.brgyID
+	INNER JOIN TeamOfficial
+	ON Team.teamOfficial		= TeamOfficial.teamofficialID
+	INNER JOIN Tournament
+	ON Team.tournament			= Tournament.tournamentID
+	WHERE Team.teamID		    = @team_id
+
+
+
+CREATE PROC GetTeamPlayers
+	@team_id int
+	AS
+	SELECT playerID , jerseyNo , playerName , playerAddress , playerBirthdate , IsCaptain , 
+		   Position.positionDesc	
+		 FROM Player
+		 INNER JOIN Position
+		 ON Player.position  =  Position.positionID
+		 INNER JOIN Team
+		 ON Player.team	     =  Team.teamID
+		 WHERE Player.team   =  @team_id
+
+
+CREATE PROC UpdateTeam
+      @team_id     int,
+	  @team_name   varchar(50),
+	  @team_logo   varchar(max),
+	  @team_slogan varchar(50),
+	  @barangay	   int
+	  AS
+	  UPDATE Team 
+	     SET teamName    = @team_name,
+			 teamLogo    = @team_logo,
+			 teamSlogan  = @team_slogan,
+			 barangay	  = @barangay
+	  WHERE teamID = @team_id
+
+
+
+CREATE PROC DeleteTeam
+	@team_id int
+	AS
+	DELETE Team   WHERE				  teamID = @team_id
+	DELETE Player WHERE team				  = @team_id
+	DELETE TeamOfficial WHERE teamofficialID = @team_id
+  
+
+CREATE PROC SearchTeam
+      @team_name   varchar(50),
+	  @team_slogan varchar(50),
+	  @barangay	   varchar(50),
+	  @tournament  varchar(50)
+   	AS
+	SELECT  teamID, teamName,teamSlogan ,teamLogo,Barangay.brgyName , TeamOfficial.teamofficialName , TeamOfficial.teamofficialDesc 
+		   ,Tournament.tournamentYear
+	FROM Team
+	INNER JOIN Barangay
+	ON Team.barangay			= Barangay.brgyID
+	INNER JOIN TeamOfficial
+	ON Team.teamOfficial		= TeamOfficial.teamofficialID
+	INNER JOIN Tournament
+	ON Team.tournament			= Tournament.tournamentID
+    WHERE   teamName				   like  '%' +@team_name    + '%'  or
+		    teamSlogan				   like  '%' +@team_slogan  + '%'  or
+			Barangay.brgyName		   like  '%' +@barangay		+ '%'  or
+			Tournament.tournamentYear like  '%' +@tournament   + '%'
+
+
+
+CREATE PROC checkRoasterTeamList
+	AS
+	SELECT  teamID, teamName,teamSlogan ,teamLogo,Barangay.brgyName , TeamOfficial.teamofficialName , TeamOfficial.teamofficialDesc 
+		   ,Tournament.tournamentYear
+	FROM Team
+	INNER JOIN Barangay
+	ON Team.barangay					=	Barangay.brgyID
+	INNER JOIN TeamOfficial
+	ON Team.teamOfficial				= TeamOfficial.teamofficialID
+	INNER JOIN Tournament
+	ON Team.tournament					= Tournament.tournamentID
+	WHERE Tournament.tournamentYear	= YEAR(GETDATE())
+	ORDER BY Barangay.brgyName
+
+
+CREATE PROC getRosterTeamList
+	@tournament_id int 
+	AS
+	SELECT  teamName,TeamOfficial.teamofficialName  
+		   ,Tournament.tournamentYear,Tournament.tournamentSched
+	FROM Team
+	INNER JOIN Barangay
+	ON Team.barangay					=	Barangay.brgyID
+	INNER JOIN TeamOfficial
+	ON Team.teamOfficial				= TeamOfficial.teamofficialID
+	INNER JOIN Tournament
+	ON Team.tournament					= Tournament.tournamentID
+	WHERE Tournament.tournamentID	    = @tournament_id
+	ORDER BY Barangay.brgyName
+
+CREATE PROC getRosterPlayerList
+	@tournament_id int  
+	AS
+	SELECT jerseyNo , playerName , teamName  
+		   FROM Player
+		   INNER JOIN Team
+		   ON Player.team					 =  Team.teamID
+		   
+		   INNER JOIN Barangay
+	       ON Team.barangay					 =	Barangay.brgyID
+
+		   INNER JOIN Tournament
+		   ON Team.tournament				 = Tournament.tournamentID
+  		   WHERE Tournament.tournamentID	 = @tournament_id
+		   ORDER BY Barangay.brgyName
+	
+
+CREATE PROC getTeamForMatch
+	AS
+	SELECT TOP 50000000  teamName,TeamOfficial.teamofficialName  
+	FROM Team
+	INNER JOIN Barangay
+	ON Team.barangay					=   Barangay.brgyID
+	INNER JOIN TeamOfficial
+	ON Team.teamOfficial				=  TeamOfficial.teamofficialID
+	INNER JOIN Tournament
+	ON Team.tournament					=  Tournament.tournamentID
+    WHERE Tournament.tournamentYear	=  YEAR(GETDATE()) 
+	ORDER BY NEWID()
+
+
+
+
+---Team STORED PROCEDURE---
+
+
+---Player STORED PROCEDURE---
+CREATE PROC SavePlayer
+	@player_jerseyNo	 varchar(75),
+	@player_name		 varchar(50),
+	@player_address	     varchar(80),
+	@player_birthdate    varchar(20),
+	@player_isCaptain    bit,
+	@position		     int,
+	@team			     int,	
+	@player_photo		 varchar(max)
+	AS 
+	INSERT INTO Player(jerseyNo,playerName,playerAddress,playerBirthdate,IsCaptain,position,team,playerImage)
+				VALUES(@player_jerseyNo,@player_name,@player_address,@player_birthdate,@player_isCaptain,@position,@team,@player_photo)
+
+CREATE PROC UpdatePlayer
+	@player_id			 int,
+	@player_jerseyNo	 varchar(75),
+	@player_name		 varchar(50),
+	@player_address	     varchar(80),
+	@player_birthdate    varchar(20),
+	@player_isCaptain    bit,
+	@position		     int,
+	@player_photo		 varchar(max)
+	AS 
+	UPDATE  Player SET jerseyNo	   = @player_jerseyNo,
+					   playerName         = @player_name,
+					   playerAddress      = @player_address,
+					   playerBirthdate    = @player_birthdate,
+					   IsCaptain    = @player_isCaptain,
+					   position			   = @position,
+					   playerImage		   = @player_photo
+				 WHERE playerID		   = @player_id
+						
+
+CREATE PROC CheckPlayerList
+	AS
+	SELECT *  FROM Player
+
+CREATE PROC CheckPlayerOnTeam
+	@team_id int
+	AS
+	SELECT playerID , jerseyNo , playerName , playerAddress , playerBirthdate , IsCaptain , 
+		  team , Position.positionDesc 
+		 FROM Player
+		 INNER JOIN Position
+		 ON Player.position  =  Position.positionID
+		 INNER JOIN Team
+		 ON Player.team	     =  Team.teamID
+		 WHERE Player.team   =  @team_id
+
+CREATE PROC GetPlayerList
+	AS
+	SELECT playerID , jerseyNo , playerName , playerAddress , playerBirthdate , IsCaptain , 
+		   team,playerImage, Position.positionDesc , Team.teamName
+		  FROM Player
+		  INNER JOIN Position
+		  ON Player.position	 =  Position.positionID
+		  INNER JOIN Team
+		  ON Player.team	     =  Team.teamID
+
+CREATE PROC SearchPlayer
+	@player_jerseyNo	 varchar(75),
+	@player_name		 varchar(50),
+	@player_address	     varchar(80),
+	@player_birthdate    varchar(20),
+	@position		     varchar(20),
+	@team			     varchar(20)
+	AS 
+    SELECT playerID , jerseyNo , playerName , playerAddress , playerBirthdate ,  
+		   Position.positionDesc , Team.teamName , Team.teamID , team 
+		  FROM Player
+		  INNER JOIN Position
+		  ON Player.position	 =  Position.positionID
+		  INNER JOIN Team
+		  ON Player.team	     =  Team.teamID
+		  WHERE jerseyNo		like '%' +  @player_jerseyNo  + '%' or
+				playerName			like '%' +  @player_name      + '%' or
+				playerAddress		like '%' +  @player_address   + '%' or
+				playerBirthdate	like '%' +  @player_birthdate + '%' or
+				positionDesc		like '%' +  @position		  + '%' or
+				teamName			like '%' +  @team		      + '%'
+		 ORDER BY playerName  ASC 
+
+---Player STORED PROCEDURE---
+
+
+
+-	--Barangay STORED PROCEDURE---
+CREATE PROC GetBarangayList
+	
+	AS
+	SELECT * 
+	FROM Barangay
+	ORDER BY brgyName
+---Barangay STORED PROCEDURE---
+
+
+--Position STORED PROCEDURE---
+CREATE PROC GetPositionList
+	
+	AS
+	SELECT * 
+	FROM Position
+	ORDER BY positionDesc
+
+
+	INSERT INTO Position(positionDesc)Values('Point guard')
+	INSERT INTO Position(positionDesc)Values('Shooting guard')
+	INSERT INTO Position(positionDesc)Values('Small forward')
+	INSERT INTO Position(positionDesc)Values('Power forward')
+	INSERT INTO Position(positionDesc)Values('Center')
+
+--Position STORED PROCEDURE---
+
+INSERT INTO Barangay (brgyName) VALUES ('Abella')
+INSERT INTO Barangay (brgyName) VALUES ('Bagumbayan Norte')
+INSERT INTO Barangay (brgyName) VALUES ('Bagumbayan Sur')	
+INSERT INTO Barangay (brgyName) VALUES ('Balatas')	
+INSERT INTO Barangay (brgyName) VALUES ('Calauag')	
+INSERT INTO Barangay (brgyName) VALUES ('Cararayan')	
+INSERT INTO Barangay (brgyName) VALUES ('Carolina')	
+INSERT INTO Barangay (brgyName) VALUES ('Concepcion Grande')	
+INSERT INTO Barangay (brgyName) VALUES ('Concepcion Pequeña')	
+INSERT INTO Barangay (brgyName) VALUES ('Dayangdang')	
+INSERT INTO Barangay (brgyName) VALUES ('Del Rosario')	
+INSERT INTO Barangay (brgyName) VALUES ('Dinaga')	
+INSERT INTO Barangay (brgyName) VALUES ('Igualdad')
+INSERT INTO Barangay (brgyName) VALUES ('Lerma')	
+INSERT INTO Barangay (brgyName) VALUES ('Liboton')	
+INSERT INTO Barangay (brgyName) VALUES ('Mabolo')	
+INSERT INTO Barangay (brgyName) VALUES ('Pacol')	
+INSERT INTO Barangay (brgyName) VALUES ('Panicuason')	
+INSERT INTO Barangay (brgyName) VALUES ('Peñafrancia')	
+INSERT INTO Barangay (brgyName) VALUES ('Sabang')	
+INSERT INTO Barangay (brgyName) VALUES ('San Felipe')	
+INSERT INTO Barangay (brgyName) VALUES ('San Francisco')	
+INSERT INTO Barangay (brgyName) VALUES ('San Isidro')	
+INSERT INTO Barangay (brgyName) VALUES ('Santa Cruz')	
+INSERT INTO Barangay (brgyName) VALUES ('Tabuco')		
+INSERT INTO Barangay (brgyName) VALUES ('Tinago')		
+INSERT INTO Barangay (brgyName) VALUES ('Triangulo')
+
+
+
+
+
+
+
+
+

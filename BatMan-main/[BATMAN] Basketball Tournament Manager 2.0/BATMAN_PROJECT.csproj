@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0AA16CF8-05CD-4825-9E44-C79D908F7C91}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>_BATMAN__Basketball_Tournament_Manager_2._0</RootNamespace>
+    <AssemblyName>[BATMAN] Basketball Tournament Manager 2.0</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EPPlus, Version=4.5.2.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.2.1\lib\net40\EPPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL\Awards.cs" />
+    <Compile Include="BLL\Barangay.cs" />
+    <Compile Include="BLL\GameOfficial.cs" />
+    <Compile Include="BLL\Match.cs" />
+    <Compile Include="BLL\PlayerStat.cs" />
+    <Compile Include="BLL\TeamStat.cs" />
+    <Compile Include="DAL\AwardHelper.cs" />
+    <Compile Include="DAL\MatchHelper.cs" />
+    <Compile Include="DAL\PlayerStatHelper.cs" />
+    <Compile Include="DAL\TeamStatHelper.cs" />
+    <Compile Include="FORMS\frmAwardHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frmAwardHistory.Designer.cs">
+      <DependentUpon>frmAwardHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\frmAwards.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frmAwards.Designer.cs">
+      <DependentUpon>frmAwards.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\frmEditPlayers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frmEditPlayers.Designer.cs">
+      <DependentUpon>frmEditPlayers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BLL\Player.cs" />
+    <Compile Include="BLL\Position.cs" />
+    <Compile Include="BLL\Team.cs" />
+    <Compile Include="BLL\TeamOfficial.cs" />
+    <Compile Include="BLL\Tournament.cs" />
+    <Compile Include="DAL\BarangayHelper.cs" />
+    <Compile Include="DAL\DatabaseConnection.cs" />
+    <Compile Include="DAL\GameOfficialsHelper.cs" />
+    <Compile Include="FORMS\frmMatchList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frmMatchList.Designer.cs">
+      <DependentUpon>frmMatchList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\frmMatchResults.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frmMatchResults.Designer.cs">
+      <DependentUpon>frmMatchResults.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\frmRecordStats.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frmRecordStats.Designer.cs">
+      <DependentUpon>frmRecordStats.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\frmScoreSheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frmScoreSheet.Designer.cs">
+      <DependentUpon>frmScoreSheet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\frmTeamOfficialList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frmTeamOfficialList.Designer.cs">
+      <DependentUpon>frmTeamOfficialList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\frmTeamUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frmTeamUpdate.Designer.cs">
+      <DependentUpon>frmTeamUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\frmViewTeam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frmViewTeam.Designer.cs">
+      <DependentUpon>frmViewTeam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PlayerHelper.cs" />
+    <Compile Include="DAL\PositionHelper.cs" />
+    <Compile Include="DAL\TeamHelper.cs" />
+    <Compile Include="DAL\TeamOfficialHelper.cs" />
+    <Compile Include="DAL\TournamentHelper.cs" />
+    <Compile Include="FORMS\frmGameOfficials.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frmGameOfficials.Designer.cs">
+      <DependentUpon>frmGameOfficials.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\frmHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frmHome.Designer.cs">
+      <DependentUpon>frmHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\frmAddPlayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frmAddPlayer.Designer.cs">
+      <DependentUpon>frmAddPlayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\frmPlayerList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frmPlayerList.Designer.cs">
+      <DependentUpon>frmPlayerList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\frmRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frmRegistration.Designer.cs">
+      <DependentUpon>frmRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\frmSignupSheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frmSignupSheet.Designer.cs">
+      <DependentUpon>frmSignupSheet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\frmTeamList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frmTeamList.Designer.cs">
+      <DependentUpon>frmTeamList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\frmTournament.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frmTournament.Designer.cs">
+      <DependentUpon>frmTournament.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\frmTournamentList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frmTournamentList.Designer.cs">
+      <DependentUpon>frmTournamentList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\frmCreateMatch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frmCreateMatch.Designer.cs">
+      <DependentUpon>frmCreateMatch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Globals\PlayerInfo.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FORMS\frmAwardHistory.resx">
+      <DependentUpon>frmAwardHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\frmAwards.resx">
+      <DependentUpon>frmAwards.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\frmEditPlayers.resx">
+      <DependentUpon>frmEditPlayers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\frmGameOfficials.resx">
+      <DependentUpon>frmGameOfficials.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\frmHome.resx">
+      <DependentUpon>frmHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\frmAddPlayer.resx">
+      <DependentUpon>frmAddPlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\frmMatchList.resx">
+      <DependentUpon>frmMatchList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\frmMatchResults.resx">
+      <DependentUpon>frmMatchResults.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\frmPlayerList.resx">
+      <DependentUpon>frmPlayerList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\frmRecordStats.resx">
+      <DependentUpon>frmRecordStats.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\frmScoreSheet.resx">
+      <DependentUpon>frmScoreSheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\frmTeamOfficialList.resx">
+      <DependentUpon>frmTeamOfficialList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\frmTeamUpdate.resx">
+      <DependentUpon>frmTeamUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\frmViewTeam.resx">
+      <DependentUpon>frmViewTeam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\frmRegistration.resx">
+      <DependentUpon>frmRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\frmSignupSheet.resx">
+      <DependentUpon>frmSignupSheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\frmTeamList.resx">
+      <DependentUpon>frmTeamList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\frmTournament.resx">
+      <DependentUpon>frmTournament.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\frmTournamentList.resx">
+      <DependentUpon>frmTournamentList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\frmCreateMatch.resx">
+      <DependentUpon>frmCreateMatch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Naga City Logo.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
