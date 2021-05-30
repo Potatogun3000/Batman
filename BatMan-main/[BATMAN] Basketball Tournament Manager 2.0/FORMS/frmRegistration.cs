@@ -252,7 +252,7 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.FORMS
               player.position.position_id = position;
               player.player_birthdate     = birhtdate;
               player.player_address       = address;
-              //if (playerName.Contains("Team Captain") == true) isCaptain = true;    
+              if (playerName.Contains("Team Captain") == true) isCaptain = true;    
               player.player_isCaptain     = isCaptain;
               player.player_photo         = photo;
               
