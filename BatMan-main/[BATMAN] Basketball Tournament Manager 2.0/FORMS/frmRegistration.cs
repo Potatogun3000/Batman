@@ -252,7 +252,8 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.FORMS
               player.position.position_id = position;
               player.player_birthdate     = birhtdate;
               player.player_address       = address;
-              if (playerName.Contains("Team Captain") == true) isCaptain = true;    
+              if (playerName.Contains("Team Captain") == true) 
+              isCaptain = true;    
               player.player_isCaptain     = isCaptain;
               player.player_photo         = photo;
               
@@ -306,7 +307,7 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.FORMS
             for (int i = 0; i < lvwPlayerList.Items.Count; i++)
             {
                 string playerName = lvwPlayerList.Items[i].SubItems[0].Text;
-                if (playerName.Contains("(Team Captain)") == false) check = false;
+                if (playerName.Contains("Team Captain") == false) check = false;
                 else
                 {
                     check = true;
@@ -388,6 +389,10 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.FORMS
         {
 
         }
-    
+
+        private void btnSaveTeam_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

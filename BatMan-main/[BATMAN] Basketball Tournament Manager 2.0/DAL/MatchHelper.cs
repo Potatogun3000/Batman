@@ -67,14 +67,14 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
                 foreach (DataRow dr in data.AsEnumerable())
                 {
                     Match match = new Match();
-                    match.match_id = dr.Field<int>("match_id");
-                    match.match_gameNo = dr.Field<int>("match_gameNo");
-                    match.match_referee1.gameofficialName = dr.Field<string>("match_referee1");
-                    match.match_referee2.gameofficialName = dr.Field<string>("match_referee2");
-                    match.match_homeTeam.team_name = dr.Field<string>("match_homeTeam");
-                    match.match_guestTeam.team_name = dr.Field<string>("match_guestTeam");
-                    match.match_venue = dr.Field<string>("match_venue");
-                    match.match_status = dr.Field<string>("match_status");
+                    match.match_id = dr.Field<int>("matchID");
+                    match.match_gameNo = dr.Field<int>("matchGameNo");
+                    match.match_referee1.gameofficialName = dr.Field<string>("matchRef1");
+                    match.match_referee2.gameofficialName = dr.Field<string>("matchRef2");
+                    match.match_homeTeam.team_name = dr.Field<string>("matchHome");
+                    match.match_guestTeam.team_name = dr.Field<string>("matchAway");
+                    match.match_venue = dr.Field<string>("matchVenue");
+                    match.match_status = dr.Field<string>("matchStatus");
                     list.Add(match);
                 }
             }
@@ -94,14 +94,14 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
                 foreach (DataRow dr in data.AsEnumerable())
                 {
                     Match match = new Match();
-                    match.match_id = dr.Field<int>("match_id");
-                    match.match_gameNo                      = dr.Field<int>("match_gameNo");
-                    match.match_referee1.gameofficialName   = dr.Field<string>("match_referee1");
-                    match.match_referee2.gameofficialName   = dr.Field<string>("match_referee2");
-                    match.match_homeTeam.team_name          = dr.Field<string>("match_homeTeam");
-                    match.match_guestTeam.team_name         = dr.Field<string>("match_guestTeam");
-                    match.match_venue                       = dr.Field<string>("match_venue");
-                    match.match_status                      = dr.Field<string>("match_status");
+                    match.match_id = dr.Field<int>("matchID");
+                    match.match_gameNo = dr.Field<int>("matchGameNo");
+                    match.match_referee1.gameofficialName = dr.Field<string>("matchRef1");
+                    match.match_referee2.gameofficialName = dr.Field<string>("matchRef2");
+                    match.match_homeTeam.team_name = dr.Field<string>("matchHome");
+                    match.match_guestTeam.team_name = dr.Field<string>("matchAway");
+                    match.match_venue = dr.Field<string>("matchVenue");
+                    match.match_status = dr.Field<string>("matchStatus");
                     list.Add(match);
                 }
             }
@@ -124,10 +124,10 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
                 {
                     Player player = new Player();
 
-                    player.player_jerseyNo        = dr.Field<string>("player_jerseyNo");
-                    player.player_name            = dr.Field<string>("player_name");
-                    player.team.team_name         = dr.Field<string>("team_name");
-                    player.position.position_desc = dr.Field<string>("position_desc");
+                    player.player_jerseyNo        = dr.Field<string>("jerseyNo");
+                    player.player_name            = dr.Field<string>("playerName");
+                    player.team.team_name         = dr.Field<string>("teamName");
+                    player.position.position_desc = dr.Field<string>("positionDesc");
 
                     list.Add(player);
                 }
@@ -142,8 +142,8 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
             {
                 if (!db_conn.IsConnected) return;
                 SqlParameter[] param = {  
-                                           new SqlParameter("@match_id",      match.match_id),
-                                           new SqlParameter("@match_status",  match.match_status)
+                                           new SqlParameter("@matchID",      match.match_id),
+                                           new SqlParameter("@matchStatus",  match.match_status)
                                        };
 
                 db_conn.ExecuteNonQuery("UpdateMatchStatus", param);
@@ -166,11 +166,11 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
                 {
                     Match match = new Match();
 
-                    match.match_homeTeam.team_name  = dr.Field<string>("match_homeTeam");
-                    match.match_guestTeam.team_name = dr.Field<string>("match_guestTeam");
-                    match.match_referee1.gameofficialName = dr.Field<string>("match_referee1");
-                    match.match_referee2.gameofficialName = dr.Field<string>("match_referee2");
-                    match.match_gameNo              = dr.Field<int>("match_gameNo");
+                    match.match_homeTeam.team_name  = dr.Field<string>("matcHome");
+                    match.match_guestTeam.team_name = dr.Field<string>("matchAway");
+                    match.match_referee1.gameofficialName = dr.Field<string>("matchRef1");
+                    match.match_referee2.gameofficialName = dr.Field<string>("matchRef2");
+                    match.match_gameNo              = dr.Field<int>("matchGameNo");
 
                     list.Add(match);
                 }
@@ -193,7 +193,7 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
                 foreach (DataRow dr in data.AsEnumerable())
                 {
                     Team team = new Team();
-                    team.team_logo = dr.Field<string>("team_logo");
+                    team.team_logo = dr.Field<string>("teamLogo");
                     list.Add(team);
                 }
 

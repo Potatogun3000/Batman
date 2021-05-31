@@ -82,7 +82,10 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.FORMS
 
 
                Globals.PlayerInfo.isPlayerAdd  = false;
-               if (Globals.PlayerInfo.isPlayerEdit == true) { Globals.PlayerInfo.isPlayerEdit = false;}
+               if (Globals.PlayerInfo.isPlayerEdit == true) 
+               {
+                   Globals.PlayerInfo.isPlayerEdit = false;
+               }
                this.Close();
         }
        

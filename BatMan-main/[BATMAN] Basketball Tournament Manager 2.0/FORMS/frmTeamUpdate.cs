@@ -50,8 +50,8 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.FORMS
         private void getBarangayList()
         {
             cmbBarangay.DataSource      = BarangayHelper.GetAllBarangay();
-            cmbBarangay.DisplayMember   = "brgy_name";
-            cmbBarangay.ValueMember     = "brgy_id";
+            cmbBarangay.DisplayMember   = "brgyName";
+            cmbBarangay.ValueMember     = "brgyID";
         }
 
         private void updateTeam()

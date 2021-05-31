@@ -18,7 +18,7 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
                 if (!dal.IsConnected) return false;
 
                 SqlParameter[] param = { 
-                                        new SqlParameter("@gameOfficialId",       gameOfficial.gameofficialID),
+                                        new SqlParameter("@gameOfficialID",       gameOfficial.gameofficialID),
                                         new SqlParameter("@gameOfficialName",     gameOfficial.gameofficialName),
                                         new SqlParameter("@gameOfficialDesc",     gameOfficial.gameofficialDesc),
                                         };
@@ -40,7 +40,7 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
                 foreach (DataRow dr in data.AsEnumerable())
                 {
                     GameOfficial gameOfficial       = new GameOfficial();
-                    gameOfficial.gameofficialID     = dr.Field<int>("gameOfficialId");
+                    gameOfficial.gameofficialID     = dr.Field<int>("gameOfficialID");
                     gameOfficial.gameofficialName   = dr.Field<string>("gameOfficialName");
                     gameOfficial.gameofficialDesc   = dr.Field<string>("gameOfficialDesc");
                   
@@ -63,7 +63,7 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
                 foreach (DataRow dr in data.AsEnumerable())
                 {
                     GameOfficial gameOfficial = new GameOfficial();
-                    gameOfficial.gameofficialID = dr.Field<int>("gameOfficialId");
+                    gameOfficial.gameofficialID = dr.Field<int>("gameOfficialID");
                     gameOfficial.gameofficialName = dr.Field<string>("gameOfficialName");
                     gameOfficial.gameofficialDesc = dr.Field<string>("gameOfficialDesc");
 
@@ -80,7 +80,7 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
             {
                 if (!dal.IsConnected) return false;
 
-                SqlParameter[] param = { new SqlParameter("@gameOfficialId", gameOfficialId) };
+                SqlParameter[] param = { new SqlParameter("@gameOfficialID", gameOfficialId) };
                 dal.ExecuteNonQuery("DeleteGameOfficial", param);
                 return true;
             }
@@ -98,7 +98,7 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
                 foreach (DataRow dr in data.AsEnumerable())
                 {
                     GameOfficial gameOfficial = new GameOfficial();
-                    gameOfficial.gameofficialID = dr.Field<int>("gameOfficialId");
+                    gameOfficial.gameofficialID = dr.Field<int>("gameOfficialID");
                     gameOfficial.gameofficialName = dr.Field<string>("gameOfficialName");
                     gameOfficial.gameofficialDesc = dr.Field<string>("gameOfficialDesc");
 

@@ -55,9 +55,9 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
                 foreach (DataRow dr in data.AsEnumerable())
                 {
                     TeamOfficial teamOfficial = new TeamOfficial();
-                    teamOfficial.teamOfficial_id    = dr.Field<int>("teamOfficial_id");
-                    teamOfficial.teamOfficial_name  = dr.Field<string>("teamOfficial_name");
-                    teamOfficial.teamOfficial_desc  = dr.Field<string>("teamOfficial_desc");
+                    teamOfficial.teamOfficial_id    = dr.Field<int>("teamOfficialID");
+                    teamOfficial.teamOfficial_name  = dr.Field<string>("teamOfficialName");
+                    teamOfficial.teamOfficial_desc  = dr.Field<string>("teamOfficialDesc");
                     list.Add(teamOfficial);
                 }
 
@@ -81,10 +81,10 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
                 foreach (DataRow dr in data.AsEnumerable())
                 {
                     TeamOfficial teamOfficial      = new TeamOfficial();
-                    teamOfficial.teamOfficial_id   = dr.Field<int>   ("teamOfficial_id");
-                    teamOfficial.teamOfficial_name = dr.Field<string>("teamOfficial_name");
-                    teamOfficial.teamOfficial_desc = dr.Field<string>("teamOfficial_desc");
-                    teamOfficial.teamName          = dr.Field<string>("team_name");
+                    teamOfficial.teamOfficial_id   = dr.Field<int>   ("teamOfficialID");
+                    teamOfficial.teamOfficial_name = dr.Field<string>("teamOfficialName");
+                    teamOfficial.teamOfficial_desc = dr.Field<string>("teamOfficialDesc");
+                    teamOfficial.teamName          = dr.Field<string>("teamName");
                     list.Add(teamOfficial);
                 }
 
@@ -107,9 +107,9 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
                 foreach (DataRow dr in data.AsEnumerable())
                 {
                     TeamOfficial teamOfficial      = new TeamOfficial();
-                    teamOfficial.teamOfficial_id   = dr.Field<int>("teamOfficial_id");
-                    teamOfficial.teamOfficial_name = dr.Field<string>("teamOfficial_name");
-                    teamOfficial.teamOfficial_desc = dr.Field<string>("teamOfficial_desc");
+                    teamOfficial.teamOfficial_id = dr.Field<int>("teamOfficialID");
+                    teamOfficial.teamOfficial_name = dr.Field<string>("teamOfficialName");
+                    teamOfficial.teamOfficial_desc = dr.Field<string>("teamOfficialDesc");
                     list.Add(teamOfficial);
                 }
 
@@ -133,10 +133,10 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
                 foreach (DataRow dr in data.AsEnumerable())
                 {
                     TeamOfficial teamOfficial      = new TeamOfficial();
-                    teamOfficial.teamOfficial_id   = dr.Field<int>("teamOfficial_id");
-                    teamOfficial.teamOfficial_name = dr.Field<string>("teamOfficial_name");
-                    teamOfficial.teamOfficial_desc = dr.Field<string>("teamOfficial_desc");
-                    teamOfficial.teamName          = dr.Field<string>("team_name");
+                    teamOfficial.teamOfficial_id = dr.Field<int>("teamOfficialID");
+                    teamOfficial.teamOfficial_name = dr.Field<string>("teamOfficialName");
+                    teamOfficial.teamOfficial_desc = dr.Field<string>("teamOfficialDesc");
+                    teamOfficial.teamName = dr.Field<string>("teamName");
                     list.Add(teamOfficial);
                 }
 

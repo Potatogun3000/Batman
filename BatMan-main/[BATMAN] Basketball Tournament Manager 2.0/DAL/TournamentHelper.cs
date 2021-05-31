@@ -20,11 +20,11 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
                 if (!dal.IsConnected) return false;
 
                 SqlParameter[] param = { 
-                                        new SqlParameter("@tournament_id",       tournament.tournament_id),
-                                        new SqlParameter("@tournament_year",     tournament.tournament_year),
-                                        new SqlParameter("@tournament_schedule", tournament.tournament_schedule),
-                                        new SqlParameter("@tournament_motto",    tournament.tournament_motto),
-                                        new SqlParameter("@tournament_status",   tournament.tournament_status)
+                                        new SqlParameter("@tournamentID",       tournament.tournament_id),
+                                        new SqlParameter("@tournamentYear",     tournament.tournament_year),
+                                        new SqlParameter("@tournamentSched", tournament.tournament_schedule),
+                                        new SqlParameter("@tournamentMotto",    tournament.tournament_motto),
+                                        new SqlParameter("@tournamentStatus",   tournament.tournament_status)
                                         };
 
                                         dal.ExecuteNonQuery("SaveTournament", param);
@@ -48,11 +48,11 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
                     foreach (DataRow dr in data.AsEnumerable())
                     {
                         Tournament tournament = new Tournament();
-                        tournament.tournament_id = dr.Field<int>("tournament_id");
-                        tournament.tournament_year = dr.Field<string>("tournament_year");
-                        tournament.tournament_schedule = dr.Field<string>("tournament_schedule");
-                        tournament.tournament_motto = dr.Field<string>("tournament_motto");
-                        tournament.tournament_status = dr.Field<string>("tournament_status");
+                        tournament.tournament_id = dr.Field<int>("tournamentID");
+                        tournament.tournament_year = dr.Field<string>("tournamentYear");
+                        tournament.tournament_schedule = dr.Field<string>("tournamentSched");
+                        tournament.tournament_motto = dr.Field<string>("tournamentMotto");
+                        tournament.tournament_status = dr.Field<string>("tournamentStatus");
 
                         list.Add(tournament);
                     }
@@ -73,7 +73,7 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
             {
                 if (!dal.IsConnected) return false;
 
-                SqlParameter[] param = { new SqlParameter("@tournament_id", tournamentId) };
+                SqlParameter[] param = { new SqlParameter("@tournamentID", tournamentId) };
                 dal.ExecuteNonQuery("DeleteTournament", param);
                 return true;
             }
@@ -92,11 +92,12 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
                 foreach (DataRow dr in data.AsEnumerable())
                 {
                     Tournament tournament = new Tournament();
-                    tournament.tournament_id        = dr.Field<int>("tournament_id");
-                    tournament.tournament_year      = dr.Field<string>("tournament_year");
-                    tournament.tournament_schedule  = dr.Field<string>("tournament_schedule");
-                    tournament.tournament_motto     = dr.Field<string>("tournament_motto");
-                    tournament.tournament_status    = dr.Field<string>("tournament_status");
+                    tournament.tournament_id = dr.Field<int>("tournamentID");
+                    tournament.tournament_year = dr.Field<string>("tournamentYear");
+                    tournament.tournament_schedule = dr.Field<string>("tournamentSched");
+                    tournament.tournament_motto = dr.Field<string>("tournamentMotto");
+                    tournament.tournament_status = dr.Field<string>("tournamentStatus");
+
                     list.Add(tournament);
                 }
             }
@@ -142,7 +143,7 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
                 foreach (DataRow dr in data.AsEnumerable())
                 {
                     Tournament tournament = new Tournament();
-                    tournament.tournament_id = dr.Field<int>("tournament_id");
+                    tournament.tournament_id = dr.Field<int>("tournamentID");
                     list.Add(tournament);
                 }
 
@@ -158,8 +159,8 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
                 if (!dal.IsConnected) return false;
 
                 SqlParameter[] param = { 
-                                        new SqlParameter("@tournament_id",       tournament.tournament_id),
-                                        new SqlParameter("@tournament_status",   tournament.tournament_status)
+                                        new SqlParameter("@tournamentID",       tournament.tournament_id),
+                                        new SqlParameter("@tournamentStatus",   tournament.tournament_status)
                                         };
 
                 dal.ExecuteNonQuery("UpdateTournamentStatus", param);

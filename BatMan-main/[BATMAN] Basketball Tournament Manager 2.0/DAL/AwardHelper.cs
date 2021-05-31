@@ -47,16 +47,16 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
                 {
                     Awards awards = new Awards();
 
-                    awards.awardID = dr.Field<int>("award_id");
-                    awards.awardChampionship = dr.Field<string>("award_champion");
-                    awards.awardFirstRunnerUp = dr.Field<string>("award_firstRunnerUp");
-                    awards.awardMVP = dr.Field<string>("award_mvp");
-                    awards.awardSF = dr.Field<string>("award_sf");
-                    awards.awardPF = dr.Field<string>("award_pf");
-                    awards.awardPG = dr.Field<string>("award_pg");
-                    awards.awardSG = dr.Field<string>("award_sg");
-                    awards.awardC = dr.Field<string>("award_c");
-                    awards.tournament.tournament_year = dr.Field<string>("tournament_year");
+                    awards.awardID = dr.Field<int>("awardID");
+                    awards.awardChampionship = dr.Field<string>("awardChamp");
+                    awards.awardFirstRunnerUp = dr.Field<string>("awardFirstRunner");
+                    awards.awardMVP = dr.Field<string>("awardMVP");
+                    awards.awardSF = dr.Field<string>("awardSF");
+                    awards.awardPF = dr.Field<string>("awardPF");
+                    awards.awardPG = dr.Field<string>("awardPG");
+                    awards.awardSG = dr.Field<string>("awardSG");
+                    awards.awardC = dr.Field<string>("awardC");
+                    awards.tournament.tournament_year = dr.Field<string>("tournamentYear");
                     list.Add(awards);
                 }
             }

@@ -283,9 +283,10 @@
             // lvwPlayerList
             // 
             this.lvwPlayerList.Font = new System.Drawing.Font("Constantia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lvwPlayerList.Location = new System.Drawing.Point(17, 31);
+            this.lvwPlayerList.HideSelection = false;
+            this.lvwPlayerList.Location = new System.Drawing.Point(17, 22);
             this.lvwPlayerList.Name = "lvwPlayerList";
-            this.lvwPlayerList.Size = new System.Drawing.Size(971, 219);
+            this.lvwPlayerList.Size = new System.Drawing.Size(971, 190);
             this.lvwPlayerList.TabIndex = 21;
             this.lvwPlayerList.UseCompatibleStateImageBehavior = false;
             // 
@@ -334,12 +335,13 @@
             this.btnSaveTeam.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSaveTeam.Font = new System.Drawing.Font("Constantia", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveTeam.ForeColor = System.Drawing.Color.Maroon;
-            this.btnSaveTeam.Location = new System.Drawing.Point(891, 687);
+            this.btnSaveTeam.Location = new System.Drawing.Point(892, 639);
             this.btnSaveTeam.Name = "btnSaveTeam";
             this.btnSaveTeam.Size = new System.Drawing.Size(112, 50);
             this.btnSaveTeam.TabIndex = 23;
             this.btnSaveTeam.Text = "Save Team";
             this.btnSaveTeam.UseVisualStyleBackColor = false;
+            this.btnSaveTeam.Click += new System.EventHandler(this.btnSaveTeam_Click);
             // 
             // btnAddPlayer
             // 
@@ -347,7 +349,7 @@
             this.btnAddPlayer.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAddPlayer.Font = new System.Drawing.Font("Constantia", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddPlayer.ForeColor = System.Drawing.Color.Maroon;
-            this.btnAddPlayer.Location = new System.Drawing.Point(773, 687);
+            this.btnAddPlayer.Location = new System.Drawing.Point(774, 639);
             this.btnAddPlayer.Name = "btnAddPlayer";
             this.btnAddPlayer.Size = new System.Drawing.Size(112, 50);
             this.btnAddPlayer.TabIndex = 24;
@@ -402,7 +404,7 @@
             this.btnRemovePlayer.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRemovePlayer.Font = new System.Drawing.Font("Constantia", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemovePlayer.ForeColor = System.Drawing.Color.Maroon;
-            this.btnRemovePlayer.Location = new System.Drawing.Point(537, 687);
+            this.btnRemovePlayer.Location = new System.Drawing.Point(538, 639);
             this.btnRemovePlayer.Name = "btnRemovePlayer";
             this.btnRemovePlayer.Size = new System.Drawing.Size(112, 50);
             this.btnRemovePlayer.TabIndex = 29;
@@ -415,7 +417,7 @@
             this.btnEditPlayer.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEditPlayer.Font = new System.Drawing.Font("Constantia", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditPlayer.ForeColor = System.Drawing.Color.Maroon;
-            this.btnEditPlayer.Location = new System.Drawing.Point(655, 687);
+            this.btnEditPlayer.Location = new System.Drawing.Point(656, 639);
             this.btnEditPlayer.Name = "btnEditPlayer";
             this.btnEditPlayer.Size = new System.Drawing.Size(112, 50);
             this.btnEditPlayer.TabIndex = 30;
@@ -428,7 +430,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Cooper Black", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 424);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(994, 257);
+            this.groupBox1.Size = new System.Drawing.Size(994, 213);
             this.groupBox1.TabIndex = 31;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Player Info";
@@ -474,7 +476,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(200)))), ((int)(((byte)(82)))));
-            this.ClientSize = new System.Drawing.Size(1019, 749);
+            this.ClientSize = new System.Drawing.Size(1019, 693);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnEditPlayer);

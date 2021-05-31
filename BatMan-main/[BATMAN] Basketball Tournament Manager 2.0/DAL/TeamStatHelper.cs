@@ -17,13 +17,13 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
            {
                if (!db_conn.IsConnected) return;
                SqlParameter[] param = {     
-                                           new SqlParameter("@team_name",                 teamStat.team_name),
-                                           new SqlParameter("@teamStat_totalScore",       teamStat.teamStat_totalScore),
-                                           new SqlParameter("@team_statQ1",               teamStat.team_statQ1),
-                                           new SqlParameter("@team_statQ2",               teamStat.team_statQ2),
-                                           new SqlParameter("@team_statQ3",               teamStat.team_statQ3),
-                                           new SqlParameter("@team_statQ4",               teamStat.team_statQ4),
-                                           new SqlParameter("@team_desc",                 teamStat.team_desc),
+                                           new SqlParameter("@teamName",                 teamStat.team_name),
+                                           new SqlParameter("@teamStatTScore",       teamStat.teamStat_totalScore),
+                                           new SqlParameter("@teamQ1",               teamStat.team_statQ1),
+                                           new SqlParameter("@teamQ2",               teamStat.team_statQ2),
+                                           new SqlParameter("@teamQ3",               teamStat.team_statQ3),
+                                           new SqlParameter("@teamQ4",               teamStat.team_statQ4),
+                                           new SqlParameter("@teamDesc",                 teamStat.team_desc),
                                            new SqlParameter("@match",                     teamStat.match.match_id),
                                        };
 
@@ -44,13 +44,13 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
                foreach (DataRow dr in data.AsEnumerable())
                {
                    TeamStat teamStat = new TeamStat();
-                   teamStat.teamStat_id          = dr.Field<int>("teamStat_id");
-                   teamStat.teamStat_totalScore  = dr.Field<int>("teamStat_totalScore");
-                   teamStat.team_statQ1          = dr.Field<int>("team_statQ1");
-                   teamStat.team_statQ2          = dr.Field<int>("team_statQ2");
-                   teamStat.team_statQ3          = dr.Field<int>("team_statQ3");
-                   teamStat.team_statQ4          = dr.Field<int>("team_statQ4");
-                   teamStat.team_desc            = dr.Field<string>("team_desc");
+                   teamStat.teamStat_id          = dr.Field<int>("teamStatID");
+                   teamStat.teamStat_totalScore  = dr.Field<int>("teamStatTScore");
+                   teamStat.team_statQ1          = dr.Field<int>("teamQ1");
+                   teamStat.team_statQ2          = dr.Field<int>("teamQ2");
+                   teamStat.team_statQ3          = dr.Field<int>("teamQ3");
+                   teamStat.team_statQ4          = dr.Field<int>("teamQ4");
+                   teamStat.team_desc            = dr.Field<string>("teamDesc");
                    teamStat.match.match_id       = dr.Field<int>("match");
 
 
@@ -73,15 +73,15 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
                foreach (DataRow dr in data.AsEnumerable())
                {
                    TeamStat teamStat = new TeamStat();
-                   teamStat.teamStat_id = dr.Field<int>("teamStat_id");
-                   teamStat.teamStat_totalScore = dr.Field<int>("teamStat_totalScore");
-                   teamStat.team_statQ1 = dr.Field<int>("team_statQ1");
-                   teamStat.team_statQ2 = dr.Field<int>("team_statQ2");
-                   teamStat.team_statQ3 = dr.Field<int>("team_statQ3");
-                   teamStat.team_statQ4 = dr.Field<int>("team_statQ4");
-                   teamStat.team_desc = dr.Field<string>("team_desc");
-                   teamStat.match.match_id = dr.Field<int>("match");
-                   list.Add(teamStat);
+                    teamStat.teamStat_id = dr.Field<int>("teamStatID");
+                    teamStat.teamStat_totalScore = dr.Field<int>("teamStatTScore");
+                    teamStat.team_statQ1 = dr.Field<int>("teamQ1");
+                    teamStat.team_statQ2 = dr.Field<int>("teamQ2");
+                    teamStat.team_statQ3 = dr.Field<int>("teamQ3");
+                    teamStat.team_statQ4 = dr.Field<int>("teamQ4");
+                    teamStat.team_desc = dr.Field<string>("teamDesc");
+                    teamStat.match.match_id = dr.Field<int>("match");
+                    list.Add(teamStat);
                }
            }
            return list;
