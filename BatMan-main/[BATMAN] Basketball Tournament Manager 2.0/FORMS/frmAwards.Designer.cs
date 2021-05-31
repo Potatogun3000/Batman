@@ -87,7 +87,7 @@
             // picTeamChampion
             // 
             this.picTeamChampion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.picTeamChampion.Location = new System.Drawing.Point(45, 170);
+            this.picTeamChampion.Location = new System.Drawing.Point(45, 134);
             this.picTeamChampion.Name = "picTeamChampion";
             this.picTeamChampion.Size = new System.Drawing.Size(275, 199);
             this.picTeamChampion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -97,7 +97,7 @@
             // picMvp
             // 
             this.picMvp.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.picMvp.Location = new System.Drawing.Point(669, 170);
+            this.picMvp.Location = new System.Drawing.Point(669, 134);
             this.picMvp.Name = "picMvp";
             this.picMvp.Size = new System.Drawing.Size(280, 199);
             this.picMvp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -107,7 +107,7 @@
             // picSF
             // 
             this.picSF.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.picSF.Location = new System.Drawing.Point(10, 553);
+            this.picSF.Location = new System.Drawing.Point(10, 440);
             this.picSF.Name = "picSF";
             this.picSF.Size = new System.Drawing.Size(184, 151);
             this.picSF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -158,7 +158,7 @@
             // picPF
             // 
             this.picPF.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.picPF.Location = new System.Drawing.Point(200, 553);
+            this.picPF.Location = new System.Drawing.Point(200, 440);
             this.picPF.Name = "picPF";
             this.picPF.Size = new System.Drawing.Size(184, 151);
             this.picPF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -168,7 +168,7 @@
             // picPG
             // 
             this.picPG.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.picPG.Location = new System.Drawing.Point(390, 553);
+            this.picPG.Location = new System.Drawing.Point(390, 440);
             this.picPG.Name = "picPG";
             this.picPG.Size = new System.Drawing.Size(184, 151);
             this.picPG.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -178,7 +178,7 @@
             // picSG
             // 
             this.picSG.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.picSG.Location = new System.Drawing.Point(589, 553);
+            this.picSG.Location = new System.Drawing.Point(589, 440);
             this.picSG.Name = "picSG";
             this.picSG.Size = new System.Drawing.Size(184, 151);
             this.picSG.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -188,7 +188,7 @@
             // picCenter
             // 
             this.picCenter.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.picCenter.Location = new System.Drawing.Point(779, 553);
+            this.picCenter.Location = new System.Drawing.Point(779, 440);
             this.picCenter.Name = "picCenter";
             this.picCenter.Size = new System.Drawing.Size(184, 151);
             this.picCenter.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -198,7 +198,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(130, 139);
+            this.label1.Location = new System.Drawing.Point(130, 116);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 13);
             this.label1.TabIndex = 55;
@@ -207,7 +207,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(789, 139);
+            this.label2.Location = new System.Drawing.Point(789, 116);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(30, 13);
             this.label2.TabIndex = 56;
@@ -216,7 +216,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(32, 525);
+            this.label3.Location = new System.Drawing.Point(32, 412);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(132, 13);
             this.label3.TabIndex = 57;
@@ -225,7 +225,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(218, 525);
+            this.label4.Location = new System.Drawing.Point(218, 412);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(138, 13);
             this.label4.TabIndex = 58;
@@ -234,7 +234,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(413, 525);
+            this.label5.Location = new System.Drawing.Point(413, 412);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(113, 13);
             this.label5.TabIndex = 59;
@@ -244,7 +244,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(831, 525);
+            this.label6.Location = new System.Drawing.Point(831, 412);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(85, 13);
             this.label6.TabIndex = 60;
@@ -253,7 +253,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(612, 525);
+            this.label7.Location = new System.Drawing.Point(612, 412);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(137, 13);
             this.label7.TabIndex = 61;
@@ -262,7 +262,7 @@
             // lblChampionTeamName
             // 
             this.lblChampionTeamName.AutoSize = true;
-            this.lblChampionTeamName.Location = new System.Drawing.Point(130, 372);
+            this.lblChampionTeamName.Location = new System.Drawing.Point(130, 336);
             this.lblChampionTeamName.Name = "lblChampionTeamName";
             this.lblChampionTeamName.Size = new System.Drawing.Size(71, 13);
             this.lblChampionTeamName.TabIndex = 62;
@@ -271,7 +271,7 @@
             // lblSFname
             // 
             this.lblSFname.AutoSize = true;
-            this.lblSFname.Location = new System.Drawing.Point(53, 729);
+            this.lblSFname.Location = new System.Drawing.Point(53, 622);
             this.lblSFname.Name = "lblSFname";
             this.lblSFname.Size = new System.Drawing.Size(71, 13);
             this.lblSFname.TabIndex = 64;
@@ -280,7 +280,7 @@
             // lblPFname
             // 
             this.lblPFname.AutoSize = true;
-            this.lblPFname.Location = new System.Drawing.Point(246, 729);
+            this.lblPFname.Location = new System.Drawing.Point(246, 622);
             this.lblPFname.Name = "lblPFname";
             this.lblPFname.Size = new System.Drawing.Size(71, 13);
             this.lblPFname.TabIndex = 65;
@@ -289,7 +289,7 @@
             // lblPGname
             // 
             this.lblPGname.AutoSize = true;
-            this.lblPGname.Location = new System.Drawing.Point(443, 729);
+            this.lblPGname.Location = new System.Drawing.Point(443, 622);
             this.lblPGname.Name = "lblPGname";
             this.lblPGname.Size = new System.Drawing.Size(71, 13);
             this.lblPGname.TabIndex = 66;
@@ -298,7 +298,7 @@
             // lblSGname
             // 
             this.lblSGname.AutoSize = true;
-            this.lblSGname.Location = new System.Drawing.Point(638, 729);
+            this.lblSGname.Location = new System.Drawing.Point(638, 622);
             this.lblSGname.Name = "lblSGname";
             this.lblSGname.Size = new System.Drawing.Size(71, 13);
             this.lblSGname.TabIndex = 67;
@@ -307,7 +307,7 @@
             // lblCname
             // 
             this.lblCname.AutoSize = true;
-            this.lblCname.Location = new System.Drawing.Point(845, 729);
+            this.lblCname.Location = new System.Drawing.Point(845, 622);
             this.lblCname.Name = "lblCname";
             this.lblCname.Size = new System.Drawing.Size(71, 13);
             this.lblCname.TabIndex = 68;
@@ -316,7 +316,7 @@
             // lblmvpTeamName
             // 
             this.lblmvpTeamName.AutoSize = true;
-            this.lblmvpTeamName.Location = new System.Drawing.Point(775, 411);
+            this.lblmvpTeamName.Location = new System.Drawing.Point(775, 375);
             this.lblmvpTeamName.Name = "lblmvpTeamName";
             this.lblmvpTeamName.Size = new System.Drawing.Size(61, 13);
             this.lblmvpTeamName.TabIndex = 69;
@@ -325,7 +325,7 @@
             // lblmvpName
             // 
             this.lblmvpName.AutoSize = true;
-            this.lblmvpName.Location = new System.Drawing.Point(775, 398);
+            this.lblmvpName.Location = new System.Drawing.Point(775, 362);
             this.lblmvpName.Name = "lblmvpName";
             this.lblmvpName.Size = new System.Drawing.Size(61, 13);
             this.lblmvpName.TabIndex = 71;
@@ -334,7 +334,7 @@
             // lblSFTname
             // 
             this.lblSFTname.AutoSize = true;
-            this.lblSFTname.Location = new System.Drawing.Point(53, 742);
+            this.lblSFTname.Location = new System.Drawing.Point(53, 635);
             this.lblSFTname.Name = "lblSFTname";
             this.lblSFTname.Size = new System.Drawing.Size(71, 13);
             this.lblSFTname.TabIndex = 72;
@@ -343,7 +343,7 @@
             // lblPFTname
             // 
             this.lblPFTname.AutoSize = true;
-            this.lblPFTname.Location = new System.Drawing.Point(246, 742);
+            this.lblPFTname.Location = new System.Drawing.Point(246, 635);
             this.lblPFTname.Name = "lblPFTname";
             this.lblPFTname.Size = new System.Drawing.Size(71, 13);
             this.lblPFTname.TabIndex = 73;
@@ -352,7 +352,7 @@
             // lblPGTname
             // 
             this.lblPGTname.AutoSize = true;
-            this.lblPGTname.Location = new System.Drawing.Point(443, 742);
+            this.lblPGTname.Location = new System.Drawing.Point(443, 635);
             this.lblPGTname.Name = "lblPGTname";
             this.lblPGTname.Size = new System.Drawing.Size(71, 13);
             this.lblPGTname.TabIndex = 74;
@@ -361,7 +361,7 @@
             // lblSGTname
             // 
             this.lblSGTname.AutoSize = true;
-            this.lblSGTname.Location = new System.Drawing.Point(638, 742);
+            this.lblSGTname.Location = new System.Drawing.Point(638, 635);
             this.lblSGTname.Name = "lblSGTname";
             this.lblSGTname.Size = new System.Drawing.Size(71, 13);
             this.lblSGTname.TabIndex = 75;
@@ -370,7 +370,7 @@
             // lblTCname
             // 
             this.lblTCname.AutoSize = true;
-            this.lblTCname.Location = new System.Drawing.Point(845, 742);
+            this.lblTCname.Location = new System.Drawing.Point(845, 635);
             this.lblTCname.Name = "lblTCname";
             this.lblTCname.Size = new System.Drawing.Size(71, 13);
             this.lblTCname.TabIndex = 76;
@@ -379,7 +379,7 @@
             // lblChampionSlogan
             // 
             this.lblChampionSlogan.AutoSize = true;
-            this.lblChampionSlogan.Location = new System.Drawing.Point(130, 398);
+            this.lblChampionSlogan.Location = new System.Drawing.Point(130, 362);
             this.lblChampionSlogan.Name = "lblChampionSlogan";
             this.lblChampionSlogan.Size = new System.Drawing.Size(71, 13);
             this.lblChampionSlogan.TabIndex = 77;
@@ -388,7 +388,7 @@
             // lblChampionBrgy
             // 
             this.lblChampionBrgy.AutoSize = true;
-            this.lblChampionBrgy.Location = new System.Drawing.Point(130, 385);
+            this.lblChampionBrgy.Location = new System.Drawing.Point(130, 349);
             this.lblChampionBrgy.Name = "lblChampionBrgy";
             this.lblChampionBrgy.Size = new System.Drawing.Size(71, 13);
             this.lblChampionBrgy.TabIndex = 78;
@@ -397,7 +397,7 @@
             // sfJ
             // 
             this.sfJ.AutoSize = true;
-            this.sfJ.Location = new System.Drawing.Point(53, 716);
+            this.sfJ.Location = new System.Drawing.Point(53, 609);
             this.sfJ.Name = "sfJ";
             this.sfJ.Size = new System.Drawing.Size(71, 13);
             this.sfJ.TabIndex = 79;
@@ -406,7 +406,7 @@
             // pfJ
             // 
             this.pfJ.AutoSize = true;
-            this.pfJ.Location = new System.Drawing.Point(246, 716);
+            this.pfJ.Location = new System.Drawing.Point(246, 609);
             this.pfJ.Name = "pfJ";
             this.pfJ.Size = new System.Drawing.Size(71, 13);
             this.pfJ.TabIndex = 80;
@@ -415,7 +415,7 @@
             // pgJ
             // 
             this.pgJ.AutoSize = true;
-            this.pgJ.Location = new System.Drawing.Point(443, 716);
+            this.pgJ.Location = new System.Drawing.Point(443, 609);
             this.pgJ.Name = "pgJ";
             this.pgJ.Size = new System.Drawing.Size(71, 13);
             this.pgJ.TabIndex = 81;
@@ -424,7 +424,7 @@
             // sgJ
             // 
             this.sgJ.AutoSize = true;
-            this.sgJ.Location = new System.Drawing.Point(638, 716);
+            this.sgJ.Location = new System.Drawing.Point(638, 609);
             this.sgJ.Name = "sgJ";
             this.sgJ.Size = new System.Drawing.Size(71, 13);
             this.sgJ.TabIndex = 82;
@@ -433,7 +433,7 @@
             // cJ
             // 
             this.cJ.AutoSize = true;
-            this.cJ.Location = new System.Drawing.Point(845, 716);
+            this.cJ.Location = new System.Drawing.Point(845, 609);
             this.cJ.Name = "cJ";
             this.cJ.Size = new System.Drawing.Size(71, 13);
             this.cJ.TabIndex = 83;
@@ -442,7 +442,7 @@
             // mvpJ
             // 
             this.mvpJ.AutoSize = true;
-            this.mvpJ.Location = new System.Drawing.Point(775, 372);
+            this.mvpJ.Location = new System.Drawing.Point(775, 336);
             this.mvpJ.Name = "mvpJ";
             this.mvpJ.Size = new System.Drawing.Size(61, 13);
             this.mvpJ.TabIndex = 84;
@@ -451,7 +451,7 @@
             // lblFRTbrgy
             // 
             this.lblFRTbrgy.AutoSize = true;
-            this.lblFRTbrgy.Location = new System.Drawing.Point(444, 385);
+            this.lblFRTbrgy.Location = new System.Drawing.Point(444, 349);
             this.lblFRTbrgy.Name = "lblFRTbrgy";
             this.lblFRTbrgy.Size = new System.Drawing.Size(71, 13);
             this.lblFRTbrgy.TabIndex = 89;
@@ -460,7 +460,7 @@
             // lblFRTmotto
             // 
             this.lblFRTmotto.AutoSize = true;
-            this.lblFRTmotto.Location = new System.Drawing.Point(444, 398);
+            this.lblFRTmotto.Location = new System.Drawing.Point(444, 362);
             this.lblFRTmotto.Name = "lblFRTmotto";
             this.lblFRTmotto.Size = new System.Drawing.Size(71, 13);
             this.lblFRTmotto.TabIndex = 88;
@@ -469,7 +469,7 @@
             // lblFRTeamName
             // 
             this.lblFRTeamName.AutoSize = true;
-            this.lblFRTeamName.Location = new System.Drawing.Point(444, 372);
+            this.lblFRTeamName.Location = new System.Drawing.Point(444, 336);
             this.lblFRTeamName.Name = "lblFRTeamName";
             this.lblFRTeamName.Size = new System.Drawing.Size(71, 13);
             this.lblFRTeamName.TabIndex = 87;
@@ -478,7 +478,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(433, 139);
+            this.label11.Location = new System.Drawing.Point(433, 116);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(106, 13);
             this.label11.TabIndex = 86;
@@ -487,7 +487,7 @@
             // picFR
             // 
             this.picFR.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.picFR.Location = new System.Drawing.Point(359, 170);
+            this.picFR.Location = new System.Drawing.Point(359, 134);
             this.picFR.Name = "picFR";
             this.picFR.Size = new System.Drawing.Size(275, 199);
             this.picFR.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -499,7 +499,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(969, 815);
+            this.ClientSize = new System.Drawing.Size(969, 654);
             this.Controls.Add(this.lblFRTbrgy);
             this.Controls.Add(this.lblFRTmotto);
             this.Controls.Add(this.lblFRTeamName);

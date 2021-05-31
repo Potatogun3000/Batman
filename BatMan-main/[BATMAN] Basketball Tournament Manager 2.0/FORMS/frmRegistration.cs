@@ -389,10 +389,5 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.FORMS
         {
 
         }
-
-        private void btnSaveTeam_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

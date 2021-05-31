@@ -341,7 +341,6 @@
             this.btnSaveTeam.TabIndex = 23;
             this.btnSaveTeam.Text = "Save Team";
             this.btnSaveTeam.UseVisualStyleBackColor = false;
-            this.btnSaveTeam.Click += new System.EventHandler(this.btnSaveTeam_Click);
             // 
             // btnAddPlayer
             // 

@@ -17,17 +17,17 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
             {
                 if (!db_conn.IsConnected) return;
                 SqlParameter[] param = {  
-                                           new SqlParameter("@JerseyNo",           playerStat.player.player_jerseyNo),
-                                           new SqlParameter("@playerName",         playerStat.player.player_name),
-                                           new SqlParameter("@playerPosition",     playerStat.position.position_desc),
-                                           new SqlParameter("@playerPoint",        playerStat.player_point),
-                                           new SqlParameter("@playerReb",         playerStat.player_reb),
-                                           new SqlParameter("@playerAssist",        playerStat.player_ft),
-                                           new SqlParameter("@playerSteal",       playerStat.player_steal),
-                                           new SqlParameter("@playerTurnOver",          playerStat.player_to),
-                                           new SqlParameter("@playerFreeThrows",          playerStat.player_ft),
-                                           new SqlParameter("@playerFouls",       playerStat.player_fouls),
-                                           new SqlParameter("@teamDesc",          playerStat.team_desc),
+                                           new SqlParameter("@player_jno",           playerStat.player.player_jerseyNo),
+                                           new SqlParameter("@player_name",         playerStat.player.player_name),
+                                           new SqlParameter("@player_position",     playerStat.position.position_desc),
+                                           new SqlParameter("@player_point",        playerStat.player_point),
+                                           new SqlParameter("@player_reb",         playerStat.player_reb),
+                                           new SqlParameter("@player_asst",        playerStat.player_ft),
+                                           new SqlParameter("@player_steal",       playerStat.player_steal),
+                                           new SqlParameter("@player_to",          playerStat.player_to),
+                                           new SqlParameter("@player_ft",          playerStat.player_ft),
+                                           new SqlParameter("@player_fouls",       playerStat.player_fouls),
+                                           new SqlParameter("@team_desc",          playerStat.team_desc),
                                            new SqlParameter("@match",              playerStat.match.match_id)
                                         
                                        };

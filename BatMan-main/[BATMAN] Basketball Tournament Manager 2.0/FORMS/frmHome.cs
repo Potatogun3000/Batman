@@ -254,6 +254,5 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0
                }
            }
        }
-
-     }
+    }
 }

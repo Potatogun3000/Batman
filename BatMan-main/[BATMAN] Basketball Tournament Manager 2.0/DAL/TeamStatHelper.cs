@@ -17,13 +17,13 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
            {
                if (!db_conn.IsConnected) return;
                SqlParameter[] param = {     
-                                           new SqlParameter("@teamName",                 teamStat.team_name),
-                                           new SqlParameter("@teamStatTScore",       teamStat.teamStat_totalScore),
-                                           new SqlParameter("@teamQ1",               teamStat.team_statQ1),
-                                           new SqlParameter("@teamQ2",               teamStat.team_statQ2),
-                                           new SqlParameter("@teamQ3",               teamStat.team_statQ3),
-                                           new SqlParameter("@teamQ4",               teamStat.team_statQ4),
-                                           new SqlParameter("@teamDesc",                 teamStat.team_desc),
+                                           new SqlParameter("@team_name",                 teamStat.team_name),
+                                           new SqlParameter("@teamStat_totalScore",       teamStat.teamStat_totalScore),
+                                           new SqlParameter("@team_statQ1",               teamStat.team_statQ1),
+                                           new SqlParameter("@team_statQ2",               teamStat.team_statQ2),
+                                           new SqlParameter("@team_statQ3",               teamStat.team_statQ3),
+                                           new SqlParameter("@team_statQ4",               teamStat.team_statQ4),
+                                           new SqlParameter("@team_desc",                 teamStat.team_desc),
                                            new SqlParameter("@match",                     teamStat.match.match_id),
                                        };
 

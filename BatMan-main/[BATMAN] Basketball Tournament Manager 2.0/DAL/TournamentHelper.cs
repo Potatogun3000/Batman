@@ -20,11 +20,11 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
                 if (!dal.IsConnected) return false;
 
                 SqlParameter[] param = { 
-                                        new SqlParameter("@tournamentID",       tournament.tournament_id),
-                                        new SqlParameter("@tournamentYear",     tournament.tournament_year),
-                                        new SqlParameter("@tournamentSched", tournament.tournament_schedule),
-                                        new SqlParameter("@tournamentMotto",    tournament.tournament_motto),
-                                        new SqlParameter("@tournamentStatus",   tournament.tournament_status)
+                                        new SqlParameter("@tournament_id",       tournament.tournament_id),
+                                        new SqlParameter("@tournament_year",     tournament.tournament_year),
+                                        new SqlParameter("@tournament_schedule", tournament.tournament_schedule),
+                                        new SqlParameter("@tournament_motto",    tournament.tournament_motto),
+                                        new SqlParameter("@tournament_status",   tournament.tournament_status)
                                         };
 
                                         dal.ExecuteNonQuery("SaveTournament", param);
@@ -73,7 +73,7 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
             {
                 if (!dal.IsConnected) return false;
 
-                SqlParameter[] param = { new SqlParameter("@tournamentID", tournamentId) };
+                SqlParameter[] param = { new SqlParameter("@tournament_id", tournamentId) };
                 dal.ExecuteNonQuery("DeleteTournament", param);
                 return true;
             }
@@ -159,8 +159,8 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
                 if (!dal.IsConnected) return false;
 
                 SqlParameter[] param = { 
-                                        new SqlParameter("@tournamentID",       tournament.tournament_id),
-                                        new SqlParameter("@tournamentStatus",   tournament.tournament_status)
+                                        new SqlParameter("@tournament_id",       tournament.tournament_id),
+                                        new SqlParameter("@tournament_status",   tournament.tournament_status)
                                         };
 
                 dal.ExecuteNonQuery("UpdateTournamentStatus", param);

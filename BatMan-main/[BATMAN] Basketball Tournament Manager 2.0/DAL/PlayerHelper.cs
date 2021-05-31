@@ -17,14 +17,14 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
             {
                 if (!db_conn.IsConnected) return;
                 SqlParameter[] param = {
-                                           new SqlParameter("@jerseyNo",         player.player_jerseyNo),
-                                           new SqlParameter("@playerName",       player.player_name),
-                                           new SqlParameter("@playerAddress",    player.player_address),
-                                           new SqlParameter("@playerBirthdate",  player.player_birthdate),
-                                           new SqlParameter("@isCaptain",        player.player_isCaptain),
+                                           new SqlParameter("@player_jerseyNo",         player.player_jerseyNo),
+                                           new SqlParameter("@player_name",       player.player_name),
+                                           new SqlParameter("@player_address",    player.player_address),
+                                           new SqlParameter("@player_birthdate",  player.player_birthdate),
+                                           new SqlParameter("@player_isCaptain",        player.player_isCaptain),
                                            new SqlParameter("@position",         player.position.position_id),
                                            new SqlParameter("@team",             player.team.team_id),
-                                           new SqlParameter("@playerImage",      player.player_photo)
+                                           new SqlParameter("@player_photo",      player.player_photo)
                                        };
                  db_conn.ExecuteNonQuery("SavePlayer", param);
             }
@@ -37,13 +37,13 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
                 if (!db_conn.IsConnected) return;
                 SqlParameter[] param = {  
                                            new SqlParameter("@playerID",        player.player_id),
-                                           new SqlParameter("@jerseyNo",        player.player_jerseyNo),
-                                           new SqlParameter("@playerName",      player.player_name),
-                                           new SqlParameter("@playerAddress",   player.player_address),
-                                           new SqlParameter("@playerBirthdate", player.player_birthdate),
-                                           new SqlParameter("@isCaptain",       player.player_isCaptain),
-                                           new SqlParameter("@position",        player.position.position_id),
-                                           new SqlParameter("@playerImage",     player.player_photo)
+                                           new SqlParameter("@player_jerseyNo",         player.player_jerseyNo),
+                                           new SqlParameter("@player_name",       player.player_name),
+                                           new SqlParameter("@player_address",    player.player_address),
+                                           new SqlParameter("@player_birthdate",  player.player_birthdate),
+                                           new SqlParameter("@player_isCaptain",        player.player_isCaptain),
+                                           new SqlParameter("@position",         player.position.position_id),
+                                           new SqlParameter("@player_photo",      player.player_photo)
                                        };
                 db_conn.ExecuteNonQuery("UpdatePlayer", param);
             }

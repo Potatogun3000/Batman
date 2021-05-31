@@ -221,7 +221,7 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
             {
                 if (!dal.IsConnected) return false;
 
-                SqlParameter[] param = { new SqlParameter("@teamID", team_id) };
+                SqlParameter[] param = { new SqlParameter("@team_id", team_id) };
                 dal.ExecuteNonQuery("DeleteTeam", param);
                 return true;
             }

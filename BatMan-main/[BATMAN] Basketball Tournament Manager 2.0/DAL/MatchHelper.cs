@@ -45,7 +45,7 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
                 foreach (DataRow dr in data.AsEnumerable())
                 {
                     Team team = new Team();
-                    team.team_id = dr.Field<int>("team_id");
+                    team.team_id = dr.Field<int>("teamID");
                     list.Add(team);
                 }
             }
@@ -142,8 +142,8 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
             {
                 if (!db_conn.IsConnected) return;
                 SqlParameter[] param = {  
-                                           new SqlParameter("@matchID",      match.match_id),
-                                           new SqlParameter("@matchStatus",  match.match_status)
+                                           new SqlParameter("@match_id",      match.match_id),
+                                           new SqlParameter("@match_status",  match.match_status)
                                        };
 
                 db_conn.ExecuteNonQuery("UpdateMatchStatus", param);
@@ -166,7 +166,7 @@ namespace _BATMAN__Basketball_Tournament_Manager_2._0.DAL
                 {
                     Match match = new Match();
 
-                    match.match_homeTeam.team_name  = dr.Field<string>("matcHome");
+                    match.match_homeTeam.team_name  = dr.Field<string>("matchHome");
                     match.match_guestTeam.team_name = dr.Field<string>("matchAway");
                     match.match_referee1.gameofficialName = dr.Field<string>("matchRef1");
                     match.match_referee2.gameofficialName = dr.Field<string>("matchRef2");
